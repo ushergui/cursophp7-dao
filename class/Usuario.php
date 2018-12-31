@@ -71,7 +71,58 @@ class Usuario{
 			$this->setDessenha($row['dessenha']);
 			$this->setDtcadastro(new DateTime($row['dtcadastro']));
 			
+			//quando coloco o this eu estou atribuindo valor a atributos ou chamando método
 		}
+		
+	}
+	
+	//Se eu colocar STATIC, eu não preciso instanciar o objeto, pode chamar direto o usuário e o método
+	public static function getList(){
+		
+		$sql = new Sql();
+		
+		$sql->select("SELECT * FROM tb_usuarios ORDER BY deslogin;");
+		
+	}
+	
+	public function search($login){
+		
+		$sql = new Sql();
+		
+		return $sql->select("SELECT * FROM tb_usuarios WHERE deslogin LIKE :SEARCH order by deslogin", array(
+		':SEARCH'=>"%".$login."%"
+
+		));
+		
+	}
+	
+	public function login($login, $password){
+		
+		$sql = new Sql();
+		
+		$results = $sql->select("SELECT * FROM tb_usuarios WHERE deslogin = :LOGIN AND dessenha = :PASSWORD", array(
+		
+		":LOGIN"=>$login,
+		":PASSWORD"=>$password
+		
+		));
+		
+		if (count($results) > 0){
+			
+			$row = $results[0];
+			
+			$this->setIdusuario($row['idusuario']);
+			$this->setDeslogin($row['deslogin']);
+			$this->setDessenha($row['dessenha']);
+			$this->setDtcadastro(new DateTime($row['dtcadastro']));
+			
+			//quando coloco o this eu estou atribuindo valor a atributos ou chamando método
+		}else{
+			
+			throw new Exception("Login e/ou senha inválidos.");
+			
+		}
+		
 		
 	}
 	
