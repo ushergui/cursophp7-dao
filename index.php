@@ -26,12 +26,22 @@ echo json_encode($search);
 */
 
 //Carrega um usuário usando o login e a senha
-
+/*
 $usuario = new Usuario();
 $usuario->login("root", "654321");
 
 echo $usuario;
 
+*/
+
+$aluno = new Usuario();
+
+$aluno->setDeslogin("alunos");
+$aluno->setDessenha("@#$%1234");
+
+$aluno->insert();
+
+echo $aluno;
 
 /*$sql = new Sql();
 
