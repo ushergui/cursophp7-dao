@@ -33,6 +33,8 @@ $usuario->login("root", "654321");
 echo $usuario;
 
 */
+//Criando um novo usuário
+/*
 
 $aluno = new Usuario();
 
@@ -43,12 +45,22 @@ $aluno->insert();
 
 echo $aluno;
 
-/*$sql = new Sql();
+$sql = new Sql();
 
 $usuarios = $sql->select("SELECT * FROM tb_usuarios");
 
 echo json_encode($usuarios);
 */
+//Fazendo o update
+
+$usuario = new Usuario();
+
+$usuario->loadById(12);
+
+$usuario->update("professor", "aijsdhiuas");
+
+echo $usuario;
+
 
 
 ?> 
