@@ -51,7 +51,7 @@ $usuarios = $sql->select("SELECT * FROM tb_usuarios");
 
 echo json_encode($usuarios);
 */
-//Fazendo o update
+/*Fazendo o update
 
 $usuario = new Usuario();
 
@@ -60,7 +60,14 @@ $usuario->loadById(12);
 $usuario->update("professor", "aijsdhiuas");
 
 echo $usuario;
+*/
 
+$usuario = new Usuario();
 
+$usuario->loadById(12);
+
+$usuario->delete();
+
+echo $usuario;
 
 ?> 
